@@ -37,7 +37,6 @@ class Investigator:
         if not 15 <= type(self.age) <= 90:
             return cer.CocAgeError()
 
-
     @staticmethod
     def edu_enhance(attr, dice):
         if dice.d100() > attr:
@@ -45,7 +44,6 @@ class Investigator:
         if attr >= 99:
             attr = 99
         return attr
-
 
     def roll_attribute(self):
         # change with difficult
@@ -123,8 +121,8 @@ class Investigator:
         # age influence and enhance verification
         if 15 <= self.age <= 19:
             cdi_list = cdi.random_divide(2, 5)
-            self.Attr.SIZ -= cdi_list[0]
-            self.Attr.STR -= cdi_list[1]
+            self.Attr.STR -= cdi_list[0]
+            self.Attr.SIZ -= cdi_list[1]
             self.Attr.EDU -= 5
             lucky_2 = math.floor((self.dice.d6() + self.dice.d6() + self.dice.d6()) * 5)
             lucky_1 = self.Attr.lucky
@@ -140,27 +138,42 @@ class Investigator:
             for i in range(3):
                 self.Attr.EDU = self.edu_enhance(self.Attr.EDU, self.dice)
             self.Attr.APP -= 15
+            cdi_list = cdi.random_divide(3, 5)
+            self.Attr.STR -= cdi_list[0]
+            self.Attr.CON -= cdi_list[1]
+            self.Attr.DEX -= cdi_list[2]
         elif self.age <= 59:
             for i in range(4):
                 self.Attr.EDU = self.edu_enhance(self.Attr.EDU, self.dice)
             self.Attr.APP -= 20
+            cdi_list = cdi.random_divide(3, 10)
+            self.Attr.STR -= cdi_list[0]
+            self.Attr.CON -= cdi_list[1]
+            self.Attr.DEX -= cdi_list[2]
         elif self.age <= 69:
             for i in range(4):
                 self.Attr.EDU = self.edu_enhance(self.Attr.EDU, self.dice)
             self.Attr.APP -= 25
+            cdi_list = cdi.random_divide(3, 20)
+            self.Attr.STR -= cdi_list[0]
+            self.Attr.CON -= cdi_list[1]
+            self.Attr.DEX -= cdi_list[2]
         elif self.age <= 79:
             for i in range(4):
                 self.Attr.EDU = self.edu_enhance(self.Attr.EDU, self.dice)
             self.Attr.APP -= 30
+            cdi_list = cdi.random_divide(3, 30)
+            self.Attr.STR -= cdi_list[0]
+            self.Attr.CON -= cdi_list[1]
+            self.Attr.DEX -= cdi_list[2]
         elif self.age <= 89:
             for i in range(4):
                 self.Attr.EDU = self.edu_enhance(self.Attr.EDU, self.dice)
             self.Attr.APP -= 35
-
-
-
-
-
+            cdi_list = cdi.random_divide(3, 40)
+            self.Attr.STR -= cdi_list[0]
+            self.Attr.CON -= cdi_list[1]
+            self.Attr.DEX -= cdi_list[2]
 
 
 inv = Investigator('10000000', 0, 100)
